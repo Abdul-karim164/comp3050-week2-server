@@ -1,0 +1,23 @@
+<html>
+<body>
+<h1>Medals tally</h1>
+Name:   <input id="name" /> <br/>
+Gold:   <input id="gold" /> <br/>
+Silver: <input id="silver" /> <br/>
+Bronze: <input id="bronze" /> <br/>
+<input type="button" value="Send" onclick="fillMedals()" />
+<script>
+function fillMedals() {
+    fetch('http://localhost:8000/test')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('name').value = data.name;
+            document.getElementById('gold').value = data.gold;
+            document.getElementById('silver').value = data.silver;
+            document.getElementById('bronze').value = data.bronze;
+        })
+        .catch(error => console.error('Error:', error));
+}
+</script>
+</body>
+</html>
